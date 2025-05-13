@@ -275,8 +275,9 @@ ContractDefinition: Box<ContractDefinition> = {
 }
 
 ContractAttribute: ContractAttribute = {
-    "is" <b:CommaOne<Base>> => ContractAttribute::Bases(b),
-    "layout" "at" <e:LiteralExpression> => ContractAttribute::Layout(e),
+    "is" <CommaOne<Base>> => ContractAttribute::Bases(<>),
+    // TODO: Expression makes the build script never finish running
+    "layout" "at" <e:NumberExpression> => ContractAttribute::Layout(e),
 }
 
 EventParameter: EventParameter = {
@@ -477,13 +478,17 @@ Precedence2: Expression = {
     Precedence1
 }
 
-Precedence1: Expression = {
+NumberExpression: Expression = {
     <l:@L> <n:number> <unit:SolNoRevertIdentifier?> <r:@R> => {
         let integer: String = n.0.chars().filter(|v| *v != '_').collect();
         let exp: String = n.1.chars().filter(|v| *v != '_').collect();
 
         Expression::NumberLiteral(Loc::File(file_no, l, r), integer, exp, unit)
     },
+}
+
+Precedence1: Expression = {
+    NumberExpression,
     <l:@L> <n:rational> <unit:SolNoRevertIdentifier?> <r:@R> => {
         let integer: String = n.0.chars().filter(|v| *v != '_').collect();
         let fraction: String = n.1.chars().filter(|v| *v != '_').collect();
