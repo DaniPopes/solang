@@ -276,7 +276,7 @@ ContractDefinition: Box<ContractDefinition> = {
 
 ContractAttribute: ContractAttribute = {
     "is" <b:CommaOne<Base>> => ContractAttribute::Bases(b),
-    // "layout" "at" <e:Expression> => ContractAttribute::Layout(e),
+    "layout" "at" <e:LiteralExpression> => ContractAttribute::Layout(e),
 }
 
 EventParameter: EventParameter = {
@@ -367,6 +367,7 @@ StorageType: StorageType = {
 }
 
 VariableAttribute: VariableAttribute = {
+    StorageLocation => VariableAttribute::StorageLocation(<>),
     Visibility => VariableAttribute::Visibility(<>),
     StorageType => VariableAttribute::StorageType(<>),
     <l:@L> "constant" <r:@R> => VariableAttribute::Constant(Loc::File(file_no, l, r)),

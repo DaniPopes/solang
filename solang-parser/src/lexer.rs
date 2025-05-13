@@ -559,6 +559,8 @@ static KEYWORDS: phf::Map<&'static str, Token> = phf_map! {
     "fallback" => Token::Fallback,
     "as" => Token::As,
     "is" => Token::Is,
+    "layout" => Token::Layout,
+    "at" => Token::KwAt,
     "abstract" => Token::Abstract,
     "virtual" => Token::Virtual,
     "override" => Token::Override,
@@ -571,6 +573,7 @@ static KEYWORDS: phf::Map<&'static str, Token> = phf_map! {
     "persistent" => Token::Persistent,
     "temporary" => Token::Temporary,
     "instance" => Token::Instance,
+    "transient" => Token::Transient,
 };
 
 impl<'input> Lexer<'input> {
