@@ -1836,6 +1836,7 @@ mod tests {
                 ty: pt::ContractTy::Contract(loc!()),
                 name: Some(id("name")),
                 base: vec![],
+                layout: None,
                 parts: vec![],
             } => "contract name {}",
             pt::ContractDefinition {
@@ -1846,6 +1847,7 @@ mod tests {
                     name: idp!("base"),
                     args: None
                 }],
+                layout: None,
                 parts: vec![],
             } => "contract name base {}",
             pt::ContractDefinition {
@@ -1856,6 +1858,7 @@ mod tests {
                     name: idp!("base"),
                     args: Some(vec![])
                 }],
+                layout: None,
                 parts: vec![],
             } => "contract name base() {}",
             pt::ContractDefinition {
@@ -1866,6 +1869,7 @@ mod tests {
                     name: idp!("base"),
                     args: Some(vec![expr!(expr)])
                 }],
+                layout: None,
                 parts: vec![],
             } => "contract name base(expr) {}",
             pt::ContractDefinition {
@@ -1883,6 +1887,7 @@ mod tests {
                         args: None
                     },
                 ],
+                layout: None,
                 parts: vec![],
             } => "contract name base1 base2 {}",
 

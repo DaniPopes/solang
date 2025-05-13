@@ -852,8 +852,42 @@ pub struct ContractDefinition {
     pub name: Option<Identifier>,
     /// The list of inheritance specifiers.
     pub base: Vec<Base>,
+    /// The layout specifier.
+    pub layout: Option<Box<Expression>>,
     /// The list of contract parts.
     pub parts: Vec<ContractPart>,
+}
+
+impl ContractDefinition {
+    pub(crate) fn new(
+        loc: Loc,
+        ty: ContractTy,
+        name: Option<Identifier>,
+        attrs: Vec<ContractAttribute>,
+        parts: Vec<ContractPart>,
+    ) -> Self {
+        let mut base = Vec::new();
+        let mut layout = None;
+        for attr in attrs {
+            match attr {
+                ContractAttribute::Bases(b) => base.extend(b),
+                ContractAttribute::Layout(l) => layout = Some(l),
+            }
+        }
+        Self {
+            loc,
+            ty,
+            name,
+            base,
+            layout: layout.map(Box::new),
+            parts,
+        }
+    }
+}
+
+pub(crate) enum ContractAttribute {
+    Bases(Vec<Base>),
+    Layout(Expression),
 }
 
 /// An event parameter.

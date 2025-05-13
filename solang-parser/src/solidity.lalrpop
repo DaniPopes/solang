@@ -259,11 +259,6 @@ ContractPart: ContractPart = {
     Using => ContractPart::Using(<>),
 }
 
-Bases: Vec<Base> = {
-    => Vec::new(),
-    "is" <CommaOne<Base>> => <>,
-}
-
 Base: Base = {
     <l:@L> <name:SolIdentifierPath> <args:("(" <Comma<Expression>> ")")?> <r:@R> => Base {
         loc: Loc::File(file_no, l, r),
@@ -273,10 +268,15 @@ Base: Base = {
 }
 
 ContractDefinition: Box<ContractDefinition> = {
-    <l:@L> <ty:ContractTy> <name:SolIdentifierOrError> <base:Bases>
+    <l:@L> <ty:ContractTy> <name:SolIdentifierOrError> <attrs:ContractAttribute*>
     "{" <parts:(<ContractPart>)*> "}" <r:@R> => {
-        Box::new(ContractDefinition{loc: Loc::File(file_no, l, r), ty, name, base, parts})
+        Box::new(ContractDefinition::new(Loc::File(file_no, l, r), ty, name, attrs, parts))
     }
+}
+
+ContractAttribute: ContractAttribute = {
+    "is" <b:CommaOne<Base>> => ContractAttribute::Bases(b),
+    // "layout" "at" <e:Expression> => ContractAttribute::Layout(e),
 }
 
 EventParameter: EventParameter = {
@@ -1309,6 +1309,8 @@ extern {
         "fallback" => Token::Fallback,
         "as" => Token::As,
         "is" => Token::Is,
+        "layout" => Token::Layout,
+        "at" => Token::KwAt,
         "abstract" => Token::Abstract,
         "virtual" => Token::Virtual,
         "override" => Token::Override,

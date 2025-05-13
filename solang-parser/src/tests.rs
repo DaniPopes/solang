@@ -115,6 +115,7 @@ fn parse_test() {
                 name: "foo".to_string(),
             }),
             base: Vec::new(),
+            layout: None,
             parts: vec![
                 ContractPart::StructDefinition(Box::new(StructDefinition {
                     name: Some(Identifier {
@@ -470,6 +471,7 @@ fn parse_error_test() {
                 name: "TestToken".to_string(),
             }),
             base: vec![],
+            layout: None,
             parts: vec![
                 ContractPart::ErrorDefinition(Box::new(ErrorDefinition {
                     loc: Loc::File(0, 102, 120),
@@ -1028,6 +1030,7 @@ fn parse_revert_test() {
                 name: "TestToken".to_string(),
             }),
             base: vec![],
+            layout: None,
             parts: vec![
                 ContractPart::ErrorDefinition(Box::new(ErrorDefinition {
                     loc: Loc::File(0, 42, 59),
@@ -1122,6 +1125,7 @@ fn parse_user_defined_value_type() {
                 name: "TestToken".to_string(),
             }),
             base: vec![],
+            layout: None,
             parts: vec![ContractPart::TypeDefinition(Box::new(TypeDefinition {
                 loc: Loc::File(0, 75, 98),
                 name: Identifier {
@@ -1294,6 +1298,7 @@ contract MyTest {
                 name: "MyTest".to_string(),
             }),
             base: vec![],
+            layout: None,
             parts: vec![ContractPart::FunctionDefinition(
                 FunctionDefinition {
                     loc_prototype: File(0, 23, 55),

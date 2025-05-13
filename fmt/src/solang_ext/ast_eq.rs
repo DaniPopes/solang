@@ -444,7 +444,7 @@ derive_ast_eq! { struct VariableDeclaration { loc, ty, storage, name } }
 derive_ast_eq! { struct Using { loc, list, ty, global } }
 derive_ast_eq! { struct UsingFunction { loc, path, oper } }
 derive_ast_eq! { struct TypeDefinition { loc, name, ty } }
-derive_ast_eq! { struct ContractDefinition { loc, ty, name, base, parts } }
+derive_ast_eq! { struct ContractDefinition { loc, ty, name, base, layout, parts } }
 derive_ast_eq! { struct EventParameter { loc, ty, indexed, name } }
 derive_ast_eq! { struct ErrorParameter { loc, ty, name } }
 derive_ast_eq! { struct EventDefinition { loc, name, fields, anonymous } }

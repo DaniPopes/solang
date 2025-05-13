@@ -46,6 +46,9 @@ pub enum Token<'input> {
     Enum,
     Type,
 
+    Layout,
+    KwAt,
+
     Memory,
     Storage,
     Calldata,
@@ -326,6 +329,8 @@ impl fmt::Display for Token<'_> {
             Token::Temporary => write!(f, "temporary"),
             Token::Instance => write!(f, "instance"),
             Token::Transient => write!(f, "transient"),
+            Token::Layout => write!(f, "layout"),
+            Token::KwAt => write!(f, "at"),
         }
     }
 }
