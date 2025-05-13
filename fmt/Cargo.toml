@@ -10,7 +10,7 @@ repository = "https://github.com/foundry-rs/foundry"
 [dependencies]
 ariadne = "0.4"
 itertools = "0.12"
-solang-parser = { path = "../solang-parser" }
+solang-parser.workspace = true
 thiserror = "1"
 serde = "1.0"
 tracing = "0.1"
