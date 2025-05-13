@@ -1033,6 +1033,7 @@ impl pt::StorageLocation {
             Self::Memory(_) => "memory",
             Self::Storage(_) => "storage",
             Self::Calldata(_) => "calldata",
+            Self::Transient(_) => "transient",
         }
     }
 }
@@ -1580,6 +1581,9 @@ mod tests {
         };
         (calldata) => {
             pt::StorageLocation::Calldata(loc!())
+        };
+        (transient) => {
+            pt::StorageLocation::Transient(loc!())
         };
     }
 
@@ -2517,6 +2521,7 @@ mod tests {
                 pt::StorageLocation::Memory(loc!()) => "memory",
                 pt::StorageLocation::Storage(loc!()) => "storage",
                 pt::StorageLocation::Calldata(loc!()) => "calldata",
+                pt::StorageLocation::Transient(loc!()) => "transient",
             }
 
             pt::Type: {

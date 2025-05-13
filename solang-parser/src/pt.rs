@@ -504,6 +504,9 @@ pub enum StorageLocation {
 
     /// `calldata`
     Calldata(Loc),
+
+    /// `transient`
+    Transient(Loc),
 }
 
 /// A variable declaration.

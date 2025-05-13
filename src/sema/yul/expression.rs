@@ -625,9 +625,7 @@ fn resolve_suffix_access(
         | YulExpression::NumberLiteral(..)
         | YulExpression::StringLiteral(..)
         | YulExpression::YulLocalVariable(..)
-        | YulExpression::SolidityLocalVariable(_, _, Some(StorageLocation::Memory(_)), ..)
-        | YulExpression::SolidityLocalVariable(_, _, Some(StorageLocation::Calldata(_)), ..)
-        | YulExpression::SolidityLocalVariable(_, _, None, ..)
+        | YulExpression::SolidityLocalVariable(..)
         | YulExpression::BuiltInCall(..)
         | YulExpression::FunctionCall(..)
         | YulExpression::ConstantVariable(_, _, None, _) => {

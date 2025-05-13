@@ -181,6 +181,7 @@ StorageLocation: StorageLocation = {
     <l:@L> "memory" <r:@R> => StorageLocation::Memory(Loc::File(file_no, l, r)),
     <l:@L> "storage" <r:@R> => StorageLocation::Storage(Loc::File(file_no, l, r)),
     <l:@L> "calldata" <r:@R> => StorageLocation::Calldata(Loc::File(file_no, l, r)),
+    <l:@L> "transient" <r:@R> => StorageLocation::Transient(Loc::File(file_no, l, r)),
 }
 
 Identifier: Identifier = {
@@ -999,6 +1000,7 @@ YulIdentifier: Identifier = {
     <l:@L> "storage" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "storage".to_string()},
     <l:@L> "struct" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "struct".to_string()},
     <l:@L> "throw" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "throw".to_string()},
+    <l:@L> "transient" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "transient".to_string()},
     <l:@L> "try" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "try".to_string()},
     <l:@L> "using" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "using".to_string()},
     <l:@L> "view" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "view".to_string()},
@@ -1259,6 +1261,7 @@ extern {
         "memory" => Token::Memory,
         "calldata" => Token::Calldata,
         "storage" => Token::Storage,
+        "transient" => Token::Transient,
         "import" => Token::Import,
         "contract" => Token::Contract,
         "pragma" => Token::Pragma,

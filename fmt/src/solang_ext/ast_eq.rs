@@ -538,6 +538,7 @@ derive_ast_eq! { enum StorageLocation {
     Memory(loc),
     Storage(loc),
     Calldata(loc),
+    Transient(loc),
     _
 }}
 derive_ast_eq! { enum Type {

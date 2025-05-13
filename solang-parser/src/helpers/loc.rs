@@ -428,7 +428,8 @@ impl_for_enums! {
     pt::StorageLocation: match self {
         Self::Calldata(l, ..)
         | Self::Memory(l, ..)
-        | Self::Storage(l, ..) => l,
+        | Self::Storage(l, ..)
+        | Self::Transient(l, ..) => l,
     }
 
     pt::UsingList: match self {

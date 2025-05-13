@@ -49,6 +49,7 @@ pub enum Token<'input> {
     Memory,
     Storage,
     Calldata,
+    Transient,
 
     Public,
     Private,
@@ -324,6 +325,7 @@ impl fmt::Display for Token<'_> {
             Token::Persistent => write!(f, "persistent"),
             Token::Temporary => write!(f, "temporary"),
             Token::Instance => write!(f, "instance"),
+            Token::Transient => write!(f, "transient"),
         }
     }
 }
