@@ -570,9 +570,6 @@ static KEYWORDS: phf::Map<&'static str, Token> = phf_map! {
     "unchecked" => Token::Unchecked,
     "assembly" => Token::Assembly,
     "let" => Token::Let,
-    "persistent" => Token::Persistent,
-    "temporary" => Token::Temporary,
-    "instance" => Token::Instance,
     "transient" => Token::Transient,
 };
 

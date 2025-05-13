@@ -1330,8 +1330,5 @@ extern {
         "switch" => Token::Switch,
         "case" => Token::Case,
         "default" => Token::Default,
-        "persistent" => Token::Persistent,
-        "temporary" => Token::Temporary,
-        "instance" => Token::Instance,
     }
 }
