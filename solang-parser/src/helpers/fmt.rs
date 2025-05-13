@@ -1175,6 +1175,7 @@ impl Display for pt::VariableAttribute {
                 StorageType::Temporary(_) => f.write_str("temporary"),
                 StorageType::Persistent(_) => f.write_str("persistent"),
             },
+            Self::StorageLocation(s) => s.fmt(f),
         }
     }
 }

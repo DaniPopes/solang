@@ -418,6 +418,8 @@ derive_ast_eq! { (0 A, 1 B) }
 derive_ast_eq! { (0 A, 1 B, 2 C) }
 derive_ast_eq! { (0 A, 1 B, 2 C, 3 D) }
 derive_ast_eq! { (0 A, 1 B, 2 C, 3 D, 4 E) }
+derive_ast_eq! { (0 A, 1 B, 2 C, 3 D, 4 E, 5 F) }
+derive_ast_eq! { (0 A, 1 B, 2 C, 3 D, 4 E, 5 F, 6 G) }
 derive_ast_eq! { bool }
 derive_ast_eq! { u8 }
 derive_ast_eq! { u16 }
@@ -738,6 +740,7 @@ derive_ast_eq! { enum VariableAttribute {
     Constant(loc),
     Immutable(loc),
     Override(loc, idents),
-    StorageType(s)
+    StorageType(s),
+    StorageLocation(s),
     _
 }}

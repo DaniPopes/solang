@@ -3338,6 +3338,7 @@ impl<W: Write> Visitor for Formatter<'_, W> {
                 StorageType::Temporary(_) => Some("temporary".to_string()),
                 StorageType::Persistent(_) => Some("persistent".to_string()),
             },
+            VariableAttribute::StorageLocation(s) => Some(s.to_string()),
         };
         if let Some(token) = token {
             let loc = attribute.loc();

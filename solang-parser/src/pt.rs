@@ -995,6 +995,9 @@ pub enum VariableAttribute {
 
     /// Storage type.
     StorageType(StorageType),
+
+    /// Only transient.
+    StorageLocation(StorageLocation),
 }
 
 /// Soroban storage types.

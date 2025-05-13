@@ -441,6 +441,7 @@ impl_for_enums! {
     pt::VariableAttribute: match self {
         Self::Visibility(ref l, ..) => l.loc_opt().unwrap_or_default(),
         Self::StorageType(ref l, ..) => l.loc_opt().unwrap_or_default(),
+        Self::StorageLocation(ref l, ..) => l.loc_opt().unwrap_or_default(),
         Self::Constant(l, ..)
         | Self::Immutable(l, ..)
         | Self::Override(l, ..) => l,

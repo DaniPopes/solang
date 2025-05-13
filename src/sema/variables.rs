@@ -248,6 +248,7 @@ pub fn variable_decl<'a>(
                     storage_type = Some(s.clone());
                 }
             }
+            pt::VariableAttribute::StorageLocation(_) => todo!(),
         }
     }
 

@@ -314,7 +314,13 @@ fn check_infinite_struct_size(graph: &Graph, nodes: Vec<usize>, ns: &mut Namespa
 /// All affected struct fields will be flagged as recursive (and infinite size as well, if they are).
 fn check_recursive_struct_field(node: usize, graph: &Graph, ns: &mut Namespace) {
     for n in 0..ns.structs.len() {
-        for path in all_simple_paths::<Vec<_>, &Graph>(graph, n.into(), node.into(), 0, None) {
+        for path in all_simple_paths::<Vec<_>, &Graph, std::hash::RandomState>(
+            graph,
+            n.into(),
+            node.into(),
+            0,
+            None,
+        ) {
             for (a, b) in path.windows(2).map(|a_b| (a_b[0], a_b[1])) {
                 for edge in graph.edges_connecting(a, b) {
                     ns.structs[a.index()].fields[*edge.weight()].recursive = true;
@@ -365,7 +371,9 @@ fn find_struct_recursion(ns: &mut Namespace) {
     for n in tarjan_scc(&graph).iter().flatten().dedup() {
         // Don't use None. It'll default to `node_count() - 1` and fail to find path for graphs like this: `A <-> B`
         let max_len = Some(graph.node_count());
-        if let Some(cycle) = all_simple_paths::<Vec<_>, &Graph>(&graph, *n, *n, 0, max_len).next() {
+        if let Some(cycle) =
+            all_simple_paths::<Vec<_>, _, std::hash::RandomState>(&graph, *n, *n, 0, max_len).next()
+        {
             check_infinite_struct_size(&graph, cycle.iter().map(|p| p.index()).collect(), ns);
             check_recursive_struct_field(n.index(), &graph, ns);
         }
