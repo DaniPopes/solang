@@ -189,11 +189,7 @@ Identifier: Identifier = {
 }
 
 SolIdentifier: Identifier = {
-    <l:@L> <n:identifier> <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: n.to_string()},
-    <l:@L> "switch" <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: "switch".to_string()},
-    <l:@L> "leave" <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: "leave".to_string()},
-    <l:@L> "case" <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: "case".to_string()},
-    <l:@L> "default" <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: "default".to_string()},
+    SolNoRevertIdentifier => <>,
     <l:@L> "revert" <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: "revert".to_string()},
 }
 
@@ -215,6 +211,9 @@ SolNoRevertIdentifier: Identifier = {
     <l:@L> "leave" <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: "leave".to_string()},
     <l:@L> "case" <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: "case".to_string()},
     <l:@L> "default" <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: "default".to_string()},
+    // <l:@L> "transient" <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: "transient".to_string()},
+    // <l:@L> "layout" <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: "layout".to_string()},
+    <l:@L> "at" <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: "at".to_string()},
 }
 
 SolIdentifierPath: IdentifierPath = {
@@ -1016,6 +1015,10 @@ YulIdentifier: Identifier = {
     <l:@L> <u:Uint> <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: format!("uint{}", u)},
     <l:@L> "string" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "string".to_string()},
     <l:@L> "unchecked" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "unchecked".to_string()},
+
+    //<l:@L> "layout" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "layout".to_string()},
+    <l:@L> "at" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "at".to_string()},
+    //<l:@L> "transient" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "transient".to_string()},
 }
 
 YulStatement: YulStatement = {
