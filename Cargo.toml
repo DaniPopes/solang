@@ -138,4 +138,4 @@ language_server = [
 members = ["solang-parser", "fmt", "tests/wasm_host_attr"]
 
 [workspace.dependencies]
-solang-parser = { path = "solang-parser", version = "0.3.3", package = "foundry-solang-parser" }
+solang-parser = { path = "solang-parser", version = "0.3.8", package = "foundry-solang-parser" }
