@@ -190,6 +190,7 @@ Identifier: Identifier = {
 
 SolIdentifier: Identifier = {
     SolNoRevertIdentifier => <>,
+    <l:@L> "layout" <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: "layout".to_string()},
     <l:@L> "revert" <r:@R> => Identifier{loc: Loc::File(file_no, l, r), name: "revert".to_string()},
 }
 
@@ -1016,7 +1017,7 @@ YulIdentifier: Identifier = {
     <l:@L> "string" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "string".to_string()},
     <l:@L> "unchecked" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "unchecked".to_string()},
 
-    //<l:@L> "layout" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "layout".to_string()},
+    <l:@L> "layout" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "layout".to_string()},
     <l:@L> "at" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "at".to_string()},
     //<l:@L> "transient" <r:@L> => Identifier{loc: Loc::File(file_no, l, r), name: "transient".to_string()},
 }

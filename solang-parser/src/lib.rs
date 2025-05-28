@@ -19,6 +19,9 @@ pub mod pt;
 #[cfg(test)]
 mod tests;
 
+#[cfg(test)]
+mod tests2;
+
 #[allow(
     clippy::needless_lifetimes,
     clippy::type_complexity,
